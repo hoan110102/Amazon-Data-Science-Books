@@ -1,9 +1,9 @@
-select * from amazon_books
-select * from amazon_books_uncleaned
+-- Select data
+select * from dbo.amazon_books
 
 
 -- 1, Delete unnecessary columns
-alter table amazon_books
+alter table dbo.amazon_books
 drop column
 	pages,
 	weight,
@@ -15,7 +15,7 @@ drop column
 
 
 -- 2, Check null value
-select * from amazon_books
+select * from dbo.amazon_books
 where name is null
 	or author is null
 	or price is null
@@ -36,13 +36,13 @@ where name is null
 	which also means that the values in star5, 4, 3, 2, 1 and avg_reviews are all 0
 */
 
-delete from amazon_books -- Delete rows
+delete from dbo.amazon_books -- Delete rows
 where author is null 
 	or publisher is null 
 	or language is null 
 	or price is null
 -----
-update amazon_books -- Set '0' for null values
+update dbo.amazon_books -- Set '0' for null values
 set
 	n_reviews=0,
 	avg_reviews=0,
@@ -65,7 +65,7 @@ with cte_author as (
 select
 	author,
 	replace(replace(author, '[ ', ''), ']', '') as author1 --Remove '[]'
-from amazon_books
+from dbo.amazon_books
 )
 select
 	author,
@@ -76,7 +76,7 @@ select
 	end as new_author --Change 'and' into '&'
 from cte_author
 -----
-update amazon_books
+update dbo.amazon_books
 set author=
 	case
 		when charindex('et al', replace(replace(author, '[ ', ''), ']', ''), 1)=1
@@ -94,9 +94,9 @@ select
 	avg_reviews,
 	round(price, 2) as new_price,
 	round(avg_reviews, 2) as new_avg_price
-from amazon_books
+from dbo.amazon_books
 -----
-update amazon_books
+update dbo.amazon_books
 set
 	price=round(price, 2),
 	avg_reviews=round(avg_reviews, 2)
@@ -107,9 +107,9 @@ set
 select
 	star5,
 	substring(star5, 1, len(star5)-1) as new_star5
-from amazon_books
+from dbo.amazon_books
 -----
-update amazon_books
+update dbo.amazon_books
 set star5=substring(star5, 1, len(star5)-1)
 -----
 alter table amazon_books
@@ -123,7 +123,7 @@ alter column star5 tinyint
 */
 
 -- Add 2 new columns
-alter table amazon_books
+alter table dbo.amazon_books
 add
 	publish_date date,
 	edition nvarchar(15)
@@ -140,9 +140,9 @@ select
 		when charindex('edition', publisher, 1)=0 then 'N/A'
 		else substring(publisher, charindex(';', publisher, 1)+2, (charindex('(', publisher, 1)-1)-(charindex(';', publisher, 1)+1))
 	end as edition
-from amazon_books
+from dbo.amazon_books
 -----
-update amazon_books
+update dbo.amazon_books
 set
 	publish_date=try_convert(date, substring(publisher, charindex('(', publisher, 1)+1, len(publisher)-(charindex('(', publisher, 1)+1)), 103),
 	edition=
@@ -156,4 +156,3 @@ set
 				then left(publisher, charindex('(', publisher, 1)-2)
 			else left(publisher, charindex(';', publisher, 1)-1)
 		end
-
