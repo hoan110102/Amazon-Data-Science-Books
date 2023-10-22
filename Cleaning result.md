@@ -28,6 +28,7 @@ where name is null
 	or publisher is null
 ```
 **Result:**
+
 ![Check null](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/dda2d18d-a87f-49a5-a57c-2c37bd11a62e)
 
 ```
@@ -55,6 +56,7 @@ where avg_reviews is null
 	or star1 is null
 ```
 **Result:**
+
 ![delete null](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/7af9b4a8-57dc-4ce8-aded-c6b923b80c04)
 
 3. Remove symbol '[]', change 'and' into '&' in author
@@ -86,6 +88,7 @@ set author=
 -- Note: I just replace "author1" by "replace(replace(author, '[ ', ''), ']', '')" in update syntax
 ```
 **Result:**
+
 ![remove ](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/0ad8baba-f7db-4fe4-9af4-3a13c56898eb)
 
 4. Round price and avg_reviews to 2 decimal places
@@ -103,6 +106,7 @@ set
 	avg_reviews=round(avg_reviews, 2)
 ```
 **Result:**
+
 ![round number](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/eb838a6b-8918-4995-83fa-0e0cda077438)
 
 5. Remove symbol '%' in stars and convert to numeric data type
@@ -120,6 +124,7 @@ alter table amazon_books
 alter column star5 tinyint
 ```
 **Result:**
+
 ![remove symbol](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/c5449914-38e5-4403-a27a-d9fb3e1b4b4d)
 
 6. Breaking out publisher into individual columns
@@ -165,7 +170,9 @@ set
 		end
 ```
 **Result:**
+
 ![split column](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/1fba0eee-1ea0-48b0-8652-31cb73b68221)
 
-**Here is the final result:__
+**Here is the final result:**
+
 ![final](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/e160a40d-af14-4ebc-8279-17e0c73c8f5e)
