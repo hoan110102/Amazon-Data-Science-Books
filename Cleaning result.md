@@ -35,6 +35,12 @@ where name is null
 
 ![Check null](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/dda2d18d-a87f-49a5-a57c-2c37bd11a62e)
 
+The result shows that only column name doesn't have null value, so I would handle columns with null values as follows:
+
+- Delete rows that have null values in column author, publisher, price and language
+
+- Set 0 for null values in column n_reviews, it means no one has rated that book yet, which also means that the values in column star5, 4, 3, 2, 1 and avg_reviews are all 0
+
 ```sql
 delete from dbo.amazon_books -- Delete rows
 where author is null 
@@ -95,6 +101,10 @@ set author=
 
 ![remove ](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/0ad8baba-f7db-4fe4-9af4-3a13c56898eb)
 
+By delete '[ ]' symbols and replace 'and' with '&', the column author is now clearer, improving readability and interpretability.
+
+Note: in the update syntax, i just replace 'author1 ' with 'replace(replace(author, '[ ', ''), ']', '')' in CTE
+
 4. Round price and avg_reviews to 2 decimal places
 ```sql
 select
@@ -130,6 +140,8 @@ alter column star5 tinyint
 **Result:**
 
 ![remove symbol](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/c5449914-38e5-4403-a27a-d9fb3e1b4b4d)
+
+I removed '%' symbol and then change the data type of this column. The remaining columns do the same.
 
 6. Breaking out publisher into individual columns
 ```sql
@@ -177,6 +189,10 @@ set
 
 ![split column](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/1fba0eee-1ea0-48b0-8652-31cb73b68221)
 
-**Here is the final result:**
+In this query, i first add 2 new columns into this table, then i insert value after extracting from column publisher. Finally, i keep name of publisher by remove everything after ';'.
+
+When inserting value into column edition, if there is no edition in column publisher, i set 'N/A'.
+
+**After completing the data cleaning steps, we have a final data table with values ​​all cleaned and refined so that we can use it for other purposes such as analysis:**
 
 ![final](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/e160a40d-af14-4ebc-8279-17e0c73c8f5e)
