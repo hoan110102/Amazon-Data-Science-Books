@@ -1,5 +1,5 @@
 1. Delete unnecessary columns
-```
+```sql
 alter table dbo.amazon_books
 drop column
 	pages,
@@ -12,7 +12,7 @@ drop column
 ```
 
 2. Check and treat null value
-```
+```sql
 select * from dbo.amazon_books
 where name is null
 	or author is null
@@ -60,7 +60,7 @@ where avg_reviews is null
 ![delete null](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/7af9b4a8-57dc-4ce8-aded-c6b923b80c04)
 
 3. Remove symbol '[]', change 'and' into '&' in author
-```
+```sql
 with cte_author as (
 select
 	author,
@@ -92,7 +92,7 @@ set author=
 ![remove ](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/0ad8baba-f7db-4fe4-9af4-3a13c56898eb)
 
 4. Round price and avg_reviews to 2 decimal places
-```
+```sql
 select
 	price,
 	avg_reviews,
@@ -110,7 +110,7 @@ set
 ![round number](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/eb838a6b-8918-4995-83fa-0e0cda077438)
 
 5. Remove symbol '%' in stars and convert to numeric data type
-```
+```sql
 -- Example with star5 and similar to the remaining columns
 select
 	star5,
@@ -128,7 +128,7 @@ alter column star5 tinyint
 ![remove symbol](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/c5449914-38e5-4403-a27a-d9fb3e1b4b4d)
 
 6. Breaking out publisher into individual columns
-```
+```sql
 /* 
 	- Split the publication time from publisher into new column publish_date
 	- Split the edition into new column edition, if there is no value 'edition' then set the value as 'N/A'
