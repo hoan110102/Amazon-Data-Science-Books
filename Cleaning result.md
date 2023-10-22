@@ -31,7 +31,7 @@ where name is null
 
 ![Check null](https://github.com/hoan110102/Amazon-Data-Science-Books/assets/148353234/dda2d18d-a87f-49a5-a57c-2c37bd11a62e)
 
-```
+```sql
 delete from dbo.amazon_books -- Delete rows
 where author is null 
 	or publisher is null 
