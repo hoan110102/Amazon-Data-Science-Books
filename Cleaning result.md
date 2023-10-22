@@ -1,5 +1,5 @@
 1. Delete unnecessary columns
-`alter table dbo.amazon_books
+```alter table dbo.amazon_books
 drop column
 	pages,
 	weight,
@@ -7,9 +7,10 @@ drop column
 	dimensions,
 	ISBN_13,
 	link,
-	complete_link`
+	complete_link
+```
 
-2. Check and treat null value
+3. Check and treat null value
 `select * from dbo.amazon_books
 where name is null
 	or author is null
