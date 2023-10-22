@@ -11,6 +11,10 @@ drop column
 	complete_link
 ```
 
+- Removing unnecessary or redundant columns streamlines the dataset and eliminates clutter. This simplifies analysis, reduces confusion, and optimizes data storage.
+
+- I delete a few irrelevant columns to make the table easier to view and manipulate
+
 2. Check and treat null value
 ```sql
 select * from dbo.amazon_books
