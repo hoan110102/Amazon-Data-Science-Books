@@ -1,6 +1,8 @@
 # Amazon Data Science Books
 **Author:** Viet Hoan
+
 **Email:** hoan.110102@gmail.com
+
 **LinkedIn:** https://www.linkedin.com/in/hoannn1101/
 
 # Introduction
