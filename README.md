@@ -8,3 +8,12 @@ This Project contains queries and results for cleaning data from Amazon Data Sci
 
 # Datasets
 The [Datasets](https://www.kaggle.com/datasets/die9origephit/amazon-data-science-books) used in this project is taken from Kaggle.
+
+# Cleaning task
+- Delete unnecessary columns
+- Check and treat null value
+- Remove symbol '[]', change 'and' into '&' in author
+- Round price and avg_reviews to 2 decimal places
+- Remove symbol '%' in stars and convert to numeric data type
+- Breaking out publisher into individual columns
+
